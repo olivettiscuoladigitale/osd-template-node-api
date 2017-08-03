@@ -19,9 +19,9 @@ This a APi backend in nodeJS and Typescript (https://www.typescriptlang.org), it
 ## Commands
 
 `npm run dev` run as development with reloading  
-`npm start` run build data qwithout reloading -> use to test  
+`npm start` run ./build code (production mode)
 `npm run build` create build files in ./build  
-`npm run build:release` create build and prepare for release, use this command before release  
+`npm run build:release` lint, create build and docs for release, use this command before release  
 `npm lint` run lint code, auto executed before build  
 `npm run doc` generate typedoc docs in ./doc, executed on build release  
 
