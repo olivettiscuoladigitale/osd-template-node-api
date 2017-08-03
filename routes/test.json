@@ -1,0 +1,40 @@
+{
+  "GLOBAL": {
+    "baseUrl": "/api/v1/test"
+  },
+  "/": {
+    "GET": {
+      "route": "hometest",
+      "jwt": false
+    }
+  },
+  "/protected": {
+    "GET": {
+      "route": "protectedRoute",
+      "jwt": true
+    }
+  },
+  "/validateparam/:id": {
+    "GET": {
+      "route": "validateparam",
+      "jwt": false,
+      "validators": {
+        "params": {
+          "id": {
+            "notEmpty": true,
+            "isLength": {
+              "options": [
+                {
+                  "min": 5,
+                  "max": 10
+                }
+              ],
+              "errorMessage": "Must be between 5 and 10 chars long"
+            },
+            "errorMessage": "id is required"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "name": "nodejs-api-template",
+  "description": "A typescript api template for nodejs",
+  "version": "0.0.1",
+  "author": "Giorgio Modoni <modogio@gmail.com>",
+  "homepage": "http://",
+  "main": "./build/server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alfabook/ab-template-node-api"
+  },
+  "bugs": {
+    "url": "https://github.com/alfabook/ab-template-node-api/issues"
+  },
+  "scripts": {
+    "start": "node ./build/server.js",
+    "dev": "npm run live",
+    "test": "NODE_ENV=test npm run test:coverage",
+    "test:w": "set NODE_ENV=test&& npm run test:coverage",
+    "build:release": "npm run build && npm run doc",
+    "live": "nodemon --ignore 'src/lib/smtpMailer/*'  --exec ts-node -- ./src/server.ts",
+    "build": "rm -rf ./build && npm run lint && tsc -p tsconfig.json",
+    "build:nolint": "rm -rf ./build  && tsc -p tsconfig.json",
+    "lint": "tslint --config ./tslint.json ./src/server.ts",
+    "doc": "typedoc --out ./doc ./src/server.ts",
+    "test:coverage": "nyc mocha --compilers ts:ts-node/register ./test/test.ts",
+    "test:coverage:check": "nyc check-coverage --lines 75 --functions 75 --branches 75",
+    "test:coverage:report": "nyc report",
+    "test:coverage:coveralls": "nyc report --reporter=text-lcov | ./node_modules/coveralls/bin/coveralls.js",
+    "docker": "npm run docker:create && npm run docker:run",
+    "docker:create": "docker build -t alfabook/scb-classroom-api .",
+    "docker:run": "docker run -p 49160:3000 -d alfabook/scb-classroom-api",
+    "deploy": "npm run build:release && gcloud app deploy"
+  },
+  "license": "MIT2",
+  "devDependencies": {
+    "@types/body-parser": "^1.16.4",
+    "@types/chai": "^3.4.35",
+    "@types/chai-http": "0.0.30",
+    "@types/compression": "0.0.33",
+    "@types/express": "^4.0.36",
+    "@types/express-jwt": "0.0.34",
+    "@types/mocha": "^2.2.40",
+    "@types/morgan": "^1.7.32",
+    "@types/node": "^7.0.38",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "coveralls": "^2.13.0",
+    "mocha": "^3.4.2",
+    "nodemon": "^1.11.0",
+    "nyc": "^10.2.0",
+    "pre-push": "^0.1.1",
+    "ts-node": "^3.2.1",
+    "tslint": "^4.3.1",
+    "typedoc": "^0.7.1",
+    "typescript": "^2.4.2"
+  },
+  "engines": {
+    "node": ">=6.9.1"
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cli-table": "^0.3.1",
+    "compression": "^1.7.0",
+    "express": "^4.15.3",
+    "express-jwt": "^5.3.0",
+    "express-validator": "^3.2.1",
+    "getconfig": "^3.1.0",
+    "json-routing": "^2.0.9",
+    "jsonwebtoken": "^7.4.1",
+    "method-override": "^2.3.9",
+    "morgan": "^1.8.2",
+    "node-startinfo": "^2.0.2",
+    "swagger-jsdoc": "^1.9.6"
+  },
+  "keywords": [
+    "routes",
+    "route",
+    "cors",
+    "json-route",
+    "json",
+    "route-config",
+    "express",
+    "route-config"
+  ],
+  "pre-push": [],
+  "nyc": {
+    "lines": 1,
+    "statements": 1,
+    "functions": 1,
+    "branches": 1,
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts",
+      "test.ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "check-coverage": true,
+    "watermarks": {
+      "lines": [
+        80,
+        95
+      ],
+      "functions": [
+        80,
+        95
+      ],
+      "branches": [
+        80,
+        95
+      ],
+      "statements": [
+        80,
+        95
+      ]
+    }
+  }
+}

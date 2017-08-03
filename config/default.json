@@ -1,0 +1,24 @@
+{
+  "envName": "default",
+  "port": 3000,
+  "swagger": {
+    "fileName": "api-docs.json",
+    "docsUri": "/docs",
+    "termOfService": "http://www.alfabook.it/privacy",
+    "contact": {
+      "name": "Giorgio Modoni",
+      "email": "g.modoni@alfabook.it"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "http://www.alfabook.it/licence"
+    }
+  },
+  "enableTypeDoc": true,
+  "jwt": {
+    "secret": "123456789AAAAAvvvfvfvfbgryrtfbrndf34evsfbhsdgnxcfxnhsth",
+    "options": {
+      "expiresIn": "365d"
+    }
+  }
+}

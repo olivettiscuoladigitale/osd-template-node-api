@@ -1,0 +1,12 @@
+{
+  "/": {
+    "GET": {
+      "route": "index"
+    }
+  },
+  "/_ah/health": {
+    "GET": {
+      "route": "health"
+    }
+  }
+}

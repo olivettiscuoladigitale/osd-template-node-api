@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "outDir": "build",
+    "target": "es6",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "removeComments": true,
+    "alwaysStrict": true
+  },
+  "include": [
+    "src/**/**.ts",
+    "src/**/**.json"
+
+  ],
+  "exclude": [
+    "node_modules",
+    "build",
+    "doc",
+    "test",
+    "swagger-ui"
+  ],
+  "typeRoots": [
+    "./node_modules/@types/"
+  ]
+}
