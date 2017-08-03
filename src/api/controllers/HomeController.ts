@@ -26,7 +26,7 @@ import * as express from "express";
  * @param res Response
  * @return IHomeResponse - interface object | error object
  */
-exports.index = (req: express.Request, res: any): IHomeResponse | any => {
+exports.index = (req: express.Request, res: any): IHomeResponse => {
     return res.json({message: "Hi"});
 };
 
@@ -43,6 +43,6 @@ exports.index = (req: express.Request, res: any): IHomeResponse | any => {
  *       200:
  *         description: Health ping
  */
-exports.health = (req: express.Request, res): any | any => {
+exports.health = (req: express.Request, res): string => {
     return res.send("1");
 };

@@ -35,7 +35,7 @@ exports.hometest = (req: express.Request, res: any): testResponse => {
  * @returns {testResponse}
  */
 exports.protectedRoute = (req: express.Request, res: any): testResponse => {
-    return res.json({message: "this is a route jet protected"});
+    return res.json({message: "this is a protected route"});
 };
 
 
@@ -56,5 +56,5 @@ exports.protectedRoute = (req: express.Request, res: any): testResponse => {
  * @returns {testResponse}
  */
 exports.validateparam = (req: express.Request, res: any): testResponse => {
-    return res.json({message: `good! this route is validated by json  - params: ${req.params.id}`});
+    return res.json({message: 'good! this route is validated by json'});
 };

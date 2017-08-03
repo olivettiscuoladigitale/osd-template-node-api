@@ -95,7 +95,7 @@
     ],
     "exclude": [
       "**/*.d.ts",
-      "test.ts"
+      "test/**"
     ],
     "require": [
       "ts-node/register"

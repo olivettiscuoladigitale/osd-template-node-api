@@ -44,6 +44,26 @@ describe("Server is Up:", () => {
             });
     });
 
+    it("/_ah/health GET alive return 200", (done) => {
+        chai.request(URL)
+            .get("/")
+            .end((err, res) => {
+                expect(err).to.be.null;
+                expect(res).to.have.status(200);
+                done();
+            });
+    });
+
+    it("/notExist GET - must return 404", (done) => {
+        chai.request(URL)
+            .get("/notExist")
+            .end((err, res) => {
+                expect(res).to.have.status(404);
+                done();
+            });
+    });
+
+
 });
 
 /**
@@ -53,5 +73,7 @@ describe("Server is Up:", () => {
  * 2) require test this like: require("./auth.test)
  *
  */
+
+require("./testroutes");
 
 
