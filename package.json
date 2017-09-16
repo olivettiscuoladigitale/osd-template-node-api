@@ -18,7 +18,7 @@
     "test": "NODE_ENV=test npm run test:coverage",
     "test:w": "set NODE_ENV=test&& npm run test:coverage",
     "build:release": "npm run build && npm run doc",
-    "live": "nodemon --ignore 'src/lib/smtpMailer/*'  --exec ts-node -- ./src/server.ts",
+    "live": "nodemon",
     "build": "rm -rf ./build && npm run lint && tsc -p tsconfig.json",
     "build:nolint": "rm -rf ./build  && tsc -p tsconfig.json",
     "lint": "tslint --config ./tslint.json ./src/server.ts",
@@ -119,5 +119,11 @@
         95
       ]
     }
+  },
+  "nodemonConfig": {
+    "ignore":["src/**/*.spec.ts"],
+    "ext": "ts,json",
+    "exec": "ts-node ./src/server.ts",
+    "watch":["src", "test/**/*", "routes/**/*", "config/**/*", "swaggerDef/**/*"]
   }
 }
