@@ -14,10 +14,11 @@ API backend in nodeJS and Typescript (https://www.typescriptlang.org), it use ex
 - clone repo  
 - npm install (only on first start)  
 - npm run dev  
+- call the server on port 3000 => http:localhost:3000
 
 
 ## Commands
-`npm run dev` run as development with reloading  
+`npm run dev` run as development with reloading on port 3000
 `npm start` run ./build code (production mode)
 `npm run build` create build files in ./build  
 `npm run build:release` lint, create build and docs for release, use this command before release  
