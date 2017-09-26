@@ -8,7 +8,7 @@
  * @copyright Alfabook srl 2017
  */
 
-import {routeInfo} from "../src/server";
+import {server} from "../src/server";
 import  * as chai from "chai";
 
 
@@ -29,9 +29,14 @@ chai.use(chaiHttp);
  * look at: https://github.com/gimox/json-routing/blob/master/test.ts
  */
 describe("Server is Up:", () => {
+    before( () => {
+        if (!server.isRunning) {
+            server.start();
+        }
+    });
 
     it("Has 5 routes", () => {
-        routeInfo.length.should.be.eql(5);
+        server.routesInfo.length.should.be.eql(5);
     });
 
     it("/GET return 200", (done) => {

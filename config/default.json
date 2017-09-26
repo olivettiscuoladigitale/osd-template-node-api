@@ -1,6 +1,7 @@
 {
   "envName": "default",
   "port": 3000,
+  "logLevel":"debug",
   "swagger": {
     "fileName": "api-docs.json",
     "docsUri": "/docs",

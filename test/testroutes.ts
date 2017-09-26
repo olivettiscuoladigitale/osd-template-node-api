@@ -1,3 +1,4 @@
+import {server} from "../src/server";
 import  * as chai from "chai";
 import {URL} from './test';
 
@@ -6,6 +7,11 @@ const expect = chai.expect;
 
 describe("Test routes", () => {
 
+    before( () => {
+        if (!server.isRunning) {
+            server.start();
+        }
+    });
 
     it('/api/v1/test/protected GET return message: "home test page"', (done) => {
         chai.request(URL)
