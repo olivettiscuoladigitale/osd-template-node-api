@@ -7,7 +7,6 @@
  * @author Giorgio Modoni <g.modoni@alfabook.it>
  * @copyright Alfabook srl 2017
  */
-
 import {server} from "../src/server";
 import  * as chai from "chai";
 

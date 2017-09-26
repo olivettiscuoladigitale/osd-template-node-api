@@ -55,7 +55,6 @@ export namespace JwtMdw {
             next();
         }
 
-
     }
 
     /**

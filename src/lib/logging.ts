@@ -4,8 +4,18 @@ import * as config from "getconfig";
 
 const colorize = process.env.NODE_ENV !== "production";
 
+/**
+ * Winston logger instance,
+ * call init Logger before
+ *
+ * https://github.com/winstonjs/winston
+ */
 export let logger;
 
+/**
+ * Express-winston
+ *
+ */
 export const requestLogger = expressWinston.logger({
     level: config.logLevel,
     transports: [
@@ -23,6 +33,9 @@ export const requestLogger = expressWinston.logger({
     } // optional: allows to skip some log messages based on request and/or response
 });
 
+/**
+ * Express-winston
+ */
 export const errorLogger = expressWinston.errorLogger({
     transports: [
         new winston.transports.Console({
@@ -32,6 +45,9 @@ export const errorLogger = expressWinston.errorLogger({
     ]
 });
 
+/**
+ * Init logger
+ */
 export function initLogger() {
     logger = new winston.Logger({
         level: config.logLevel,

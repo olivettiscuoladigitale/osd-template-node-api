@@ -21,7 +21,7 @@ import {StartInfo} from "node-startinfo";
 import {SwaggerService} from "./api/services/swagger.service"; // add swagger definition and explorer
 import {JwtMdw} from "./lib/jwtMdw"; // jwt utils middleware
 import {NotFoundMdw} from "./lib/notFoundMdw";
-import {logger, initLogger, errorLogger, requestLogger} from './lib/logging';
+import {initLogger, errorLogger, requestLogger} from "./lib/logging";
 
 
 export class Server {
@@ -31,16 +31,25 @@ export class Server {
     public routesInfo: Array<IRouteInfo>;
     public isRunning = false;
 
-
+    /**
+     * Call this function to start server
+     *
+     * @returns {Promise<any>}
+     */
     start(): Promise<any> {
         this.app = express();
         this.port = process.env.PORT || config.port;
         this.app.set("port", this.port);
 
-        return this.bootstrap();
+        return this._bootstrap();
     }
 
-    bootstrap(): Promise<any> {
+    /**
+     * bootstrap sequence
+     *
+     * @returns {Promise<any>}
+     */
+    _bootstrap(): Promise<any> {
         this._initDebugger();
         this._defaultMiddleware();
         this._startRoutes();
@@ -50,6 +59,11 @@ export class Server {
         return this._serverListener();
     }
 
+    /**
+     * Debugger service
+     *
+     * @private
+     */
     private _initDebugger(): void {
         initLogger();
 
@@ -59,6 +73,11 @@ export class Server {
 
     }
 
+    /**
+     * Global middleware
+     *
+     * @private
+     */
     private _defaultMiddleware(): void {
         this.app.use(compression());
         this.app.use(bodyParser.json({limit: "50mb"}));
@@ -70,6 +89,11 @@ export class Server {
         this.app.use(JwtMdw.decodeJwtMdw); // decode jwt and add to req
     }
 
+    /**
+     * Load all routes
+     *
+     * @private
+     */
     private _startRoutes(): void {
 
         const routes: JsonRoute = new JsonRoute(this.app, {
@@ -87,12 +111,23 @@ export class Server {
         NotFoundMdw(this.app); // route for not found it must be the last routes
     }
 
-
+    /**
+     * Load all global services
+     *
+     * @private
+     */
     private _startDefaultServices(): void {
         // add Swaggered UI
         SwaggerService.explorer(this.app, config.swagger.docsUri);
     }
 
+    /**
+     * Create inline doc typeDoc
+     *
+     * https://github.com/TypeStrong/typedoc
+     *
+     * @private
+     */
     private _typeDoc(): void {
         if (config.enableTypeDoc) {
             this.app.use("/typedoc", express.static(path.join(__dirname, "../doc")));
@@ -108,12 +143,24 @@ export class Server {
     private _serverListener(): Promise<any> {
         return new Promise((resolve, reject) => {
 
+            /**
+             * Server instance
+             *
+             * @type {"http".Server}
+             * @private
+             */
             let _server: http.Server = http.createServer(this.app);
 
+            /**
+             * Print screen info and base fnc
+             */
             const info: StartInfo = new StartInfo(_server);
             info.onError();
             info.onListening();
 
+            /**
+             * Start server
+             */
             _server.listen(this.port, err => {
                 if (err) {
                     this.isRunning = false;
