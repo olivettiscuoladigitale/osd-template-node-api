@@ -26,6 +26,37 @@ API backend in nodeJS and Typescript, it use express with a minimal set of vendo
 - `npm lint` run lint code, auto executed before build
 - `npm run doc` generate typedoc docs in ./doc, executed on build release
 
+## Directory Structure
+
+
+
+
+
+DIRECTORY STRUCTURE
+-------------------
+	.nyc_output				output for test and coverage. 
+	 build					build directory, js transpiled file => npn run build
+	 config					application envirnment configuration file
+     routes					routes
+	  src					application source
+        api							controllers/services/models data
+        interfaces					generic interfaces
+        lib							globsl library
+        bootstrap.ts				bootstrap file, server instance
+        server.ts					entry point file
+     swagger-ui				swagger ui web interface
+     swaggerDef				swagger doc definition
+     test					e2e test file 
+     Dockerfile				Docker file definition
+     licence.md				lincese file
+     package.json			npm package
+     readme.md				this file
+     tsconfig.json			typescript configuration
+     tslint.json			ts-lint configuration
+    
+    
+    
+    
 ## Swaggerd
 Rest api are waggerred standard:  
 - `/api-doc`  swagger json data definition;    
@@ -57,6 +88,16 @@ To start server with custom var:
 
     - start npm run dev with node_env=yourenv. 
     - start npm run dev --yourenvironment. 
+
+
+## Production / Build
+Set your environment NODE_ENV= production | stage | yourenvironment.  
+To start build version `npm start` -> start server from `./build` folder.  
+Before start server create a build: `npm run build` or `npm run build:release`.  
+If you use forever or pm2 point to file: `./build/server.js`
+
+
+
 
 
 ## TEST
