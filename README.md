@@ -39,9 +39,9 @@ DIRECTORY STRUCTURE
 	 config					application envirnment configuration file
      routes					routes
 	  src					application source
-        api							controllers/services/models data
+        api					        controllers/services/models data
         interfaces					generic interfaces
-        lib							globsl library
+        lib                                         global library
         bootstrap.ts				bootstrap file, server instance
         server.ts					entry point file
      swagger-ui				swagger ui web interface
@@ -50,7 +50,7 @@ DIRECTORY STRUCTURE
      Dockerfile				Docker file definition
      licence.md				lincese file
      package.json			npm package
-     readme.md				this file
+     readme.md                      this file
      tsconfig.json			typescript configuration
      tslint.json			ts-lint configuration
     
