@@ -26,14 +26,13 @@ API backend in nodeJS and Typescript, it use express with a minimal set of vendo
 - `npm lint` run lint code, auto executed before build
 - `npm run doc` generate typedoc docs in ./doc, executed on build release
 
-## Directory Structure
 
 
 
 
 
-DIRECTORY STRUCTURE
--------------------
+## Directory structure
+
 	.nyc_output				output for test and coverage. 
 	 build					build directory, js transpiled file => npn run build
 	 config					application envirnment configuration file
