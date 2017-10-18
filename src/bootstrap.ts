@@ -52,8 +52,8 @@ export class Server {
     _bootstrap(): Promise<any> {
         this._initDebugger();
         this._defaultMiddleware();
-        this._startRoutes();
         this._startDefaultServices();
+        this._startRoutes();
         this._typeDoc();
 
         return this._serverListener();

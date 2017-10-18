@@ -22,6 +22,10 @@
         box-sizing: inherit;
     }
 
+    .download-url-wrapper{
+      display: none !important;
+    }
+
     body {
       margin:0;
       background: #fafafa;
@@ -73,7 +77,7 @@
 window.onload = function() {
   // Build a system
   const ui = SwaggerUIBundle({
-    url: "/api-docs",
+    url: "/api-docs.json",
     dom_id: '#swagger-ui',
       validatorUrl: null,
     presets: [
