@@ -101,3 +101,9 @@ If you use forever or pm2 point to file: `./build/server.js`
 
 ## TEST
 Change package.json key prepush in `"pre-push": ["test"]`. Enjoy with tests.
+
+SYSTEM LIBRARY to be installed
+pdftk
+gs
+poppler
+

@@ -22,6 +22,7 @@ import {SwaggerService} from "./api/services/swagger.service"; // add swagger de
 import {JwtMdw} from "./lib/jwtMdw"; // jwt utils middleware
 import {NotFoundMdw} from "./lib/notFoundMdw";
 import {initLogger, errorLogger, requestLogger} from "./lib/logging";
+import {MongodbService} from "./api/services/mongodb.service";
 
 
 export class Server {
@@ -36,7 +37,9 @@ export class Server {
      *
      * @returns {Promise<any>}
      */
-    start(): Promise<any> {
+    async start(): Promise<any> {
+        await initLogger();
+        await MongodbService.mongoInit();
         this.app = express();
         this.port = process.env.PORT || config.port;
         this.app.set("port", this.port);
@@ -87,6 +90,8 @@ export class Server {
         this.app.use(requestLogger);
         this.app.use(expressValidator());
         this.app.use(JwtMdw.decodeJwtMdw); // decode jwt and add to req
+
+
     }
 
     /**

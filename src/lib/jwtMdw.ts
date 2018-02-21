@@ -36,7 +36,11 @@ export namespace JwtMdw {
         }
 
         if (req.headers && req.headers.authorization) {
-            const parts = req.headers.authorization.split(" ");
+
+            const auth: any = req.headers.authorization;
+            const parts: Array<string> = auth.split(" ");
+
+            // const parts: Array<string> = req.headers.authorization.split(" ");
 
             // token  is malformed, exit
             if (parts.length !== 2) {

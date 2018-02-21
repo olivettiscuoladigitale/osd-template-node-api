@@ -42,7 +42,7 @@
     "@types/express-jwt": "0.0.34",
     "@types/mocha": "^2.2.43",
     "@types/morgan": "^1.7.33",
-    "@types/node": "^7.0.43",
+    "@types/node": "^9.4.5",
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "coveralls": "^2.13.0",
@@ -59,9 +59,12 @@
     "node": ">=6.9.1"
   },
   "dependencies": {
+    "aws-es": "^1.5.3",
     "body-parser": "^1.18.2",
     "cli-table": "^0.3.1",
     "compression": "^1.7.0",
+    "config": "^1.29.4",
+    "crypto.js": "^1.0.1",
     "express": "^4.15.5",
     "express-jwt": "^5.3.0",
     "express-validator": "^3.2.1",
@@ -69,11 +72,15 @@
     "getconfig": "^3.1.0",
     "json-routing": "^2.0.10",
     "jsonwebtoken": "^7.4.3",
+    "md5-file": "^3.2.3",
     "method-override": "^2.3.9",
+    "mongodb": "^2.2.10",
     "morgan": "^1.8.2",
     "node-startinfo": "^2.0.3",
+    "stream": "0.0.2",
     "swagger-jsdoc": "^1.9.6",
-    "winston": "^2.3.1"
+    "winston": "^2.3.1",
+    "xml2js": "^0.4.19"
   },
   "keywords": [
     "routes",
