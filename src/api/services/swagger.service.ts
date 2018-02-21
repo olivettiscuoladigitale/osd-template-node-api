@@ -38,7 +38,6 @@ export class SwaggerService {
         if (swaggerData) {
             return swaggerData
         }
-
         swaggerData = swaggerJSDoc(this.getOptions());
 
         return swaggerData;
@@ -52,23 +51,7 @@ export class SwaggerService {
      * @param {string} url - swagger-ui uri
      */
     static explorer(app: express.Application, url: string = "/docs"): void {
-        SwaggerService.swaggerJson(app);
-
         app.use(url, express.static("./swagger-ui"));
-    }
-
-
-    static swaggerJson(app: express.Application) {
-        app.get('/api-docs', (req, res) => {
-            const swaggerSpec = SwaggerService.getSwaggerJSDoc();
-            res.json({"swagger": swaggerSpec});
-        });
-
-        app.get('/api-docs.json', (req, res) => {
-            const swaggerSpec = SwaggerService.getSwaggerJSDoc();
-            res.setHeader("Content-Type", "application/json");
-            res.send(swaggerSpec);
-        });
     }
 
 
