@@ -39,8 +39,8 @@
   "awsEs":{
     "enable": true,
     "arn":"arn:aws:iam::658582409694:user/wr-search-user",
-    "accessKey":"AKIAIU6XKYRSTBYO33LA",
-    "secretAccessKey":"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",
+    "accessKey":"ACCESS_KEY",
+    "secretAccessKey":"SECRET_KEY",
     "region":  "us-east-1",
     "host": "search-wr-search-6zxu5qd5v6hgyxzyjialxntqt4.us-east-1.es.amazonaws.com",
     "service": "es",
